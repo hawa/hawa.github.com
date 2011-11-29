@@ -1,0 +1,30 @@
+---
+layout: default 
+title: "archive"
+date: 2011-11-22 21:19
+comments: true
+categories:
+---
+<h2 class="title">{{ page.title }}</h2>
+<div class="article">
+{% assign year = '0' %}
+{% assign firstPost = true %}
+
+{% for post in site.posts %}
+    {% capture postYear %}{{ post.date | date: "%Y" }}{% endcapture %}
+    {% if postYear != year %}
+        {% if firstPost %}
+            {% assign firstPost = false %}
+        {% else %}
+            </ul>
+        {% endif %}
+        {% assign year = postYear %}
+        <h3>{{ year }}</h3>
+        <ul>
+    {% endif %}
+        <li><span class="archiveDate">{{ post.date | date: "%b %d" }}</span><a href="{{ post.url }}">{{ post.title }}</a></li>
+{% endfor %}
+{% unless firstPost %}
+    </ul>
+{% endunless %}
+</div>

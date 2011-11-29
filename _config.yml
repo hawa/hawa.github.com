@@ -1,0 +1,6 @@
+url: http://hawa.github.com
+author: hawa
+title: hawa's blog
+permalink: /:year/:month/:day/:title
+paginate: 5
+pygments: true
